@@ -84,7 +84,7 @@ public class MainActivity extends Activity{
 				@Override
 				public void onResponse(JSONObject response) {
 					Intent i = new Intent(MainActivity.this, Meteo.class);
-					i.putExtra("reponse", response.toString());
+					i.putExtra("response", response.toString());
 					MainActivity.this.startActivity(i);
 					MainActivity.this.finish();
 				}

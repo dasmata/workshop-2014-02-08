@@ -10,6 +10,7 @@ import com.zitec.workshop.meteo.ListAdapter;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.ListView;
 
 public class Meteo extends Activity {
@@ -18,7 +19,10 @@ public class Meteo extends Activity {
 	public void onCreate(Bundle savedInstance){
 		super.onCreate(savedInstance);
 		
-		String meteo= this.getIntent().getStringExtra("response");
+		this.setContentView(R.layout.meteo);
+		
+		String meteo = this.getIntent().getStringExtra("response");
+
 		ArrayList<JSONObject> arrayListResponse = new ArrayList<JSONObject>();
 		try {
 			JSONObject objResponse = new JSONObject(meteo);
@@ -32,6 +36,8 @@ public class Meteo extends Activity {
 			for(int i = 0; i < results.length(); i++){
 				arrayListResponse.add(results.getJSONObject(i));
 			}
+
+			
 			
 		} catch (JSONException e) {
 			// TODO Auto-generated catch block
@@ -43,7 +49,6 @@ public class Meteo extends Activity {
 				R.id.meteo_element,
 				arrayListResponse
 		);
-		
 		ListView myList = (ListView)this.findViewById(R.id.meteo_holder);
 		myList.setAdapter(adapter);
 	}
