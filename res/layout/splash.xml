@@ -18,6 +18,7 @@
         android:layout_height="wrap_content"
         android:text="@string/refresh_connection_button"
         android:onClick="refreshConnection"
+        android:visibility="gone"
 	    />
 	
 	<Button 
@@ -25,5 +26,6 @@
 	    android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/refresh_connection_button"
+        android:visibility="gone"
 	    />
 </LinearLayout>

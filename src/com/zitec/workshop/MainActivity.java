@@ -14,6 +14,7 @@ import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
 import android.view.Menu;
 import android.view.View;
@@ -23,18 +24,21 @@ import android.widget.TextView;
 
 public class MainActivity extends Activity{
 	protected TextView txt;
+	protected Button btn;
+	protected Button btn2;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		this.setContentView(R.layout.splash);
 		this.txt = (TextView)this.findViewById(R.id.splash_text);
+		this.btn = (Button) this.findViewById(R.id.refresh_conection);
+		this.btn2 = (Button) this.findViewById(R.id.refresh_conection2);
 		this.setActions();
 	}
 
 	
 	protected void setActions(){
-		Button btn = (Button) this.findViewById(R.id.refresh_conection2);
-		btn.setOnClickListener(new OnClickListener() {
+		this.btn2.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
 				MainActivity.this.checkInternetConnection();
@@ -44,10 +48,14 @@ public class MainActivity extends Activity{
 	
 	protected void showErrorMessage(){
 		txt.setText(this.getResources().getString(R.string.splash_error_message));
+		this.btn.setVisibility(View.VISIBLE);
+		this.btn2.setVisibility(View.VISIBLE);
 	}
 	
 	protected void showLoading(){
 		txt.setText(this.getResources().getString(R.string.splash_text));
+		this.btn.setVisibility(View.GONE);
+		this.btn2.setVisibility(View.GONE);
 	}
 	
 	protected void checkInternetConnection(){
@@ -75,7 +83,8 @@ public class MainActivity extends Activity{
 
 				@Override
 				public void onResponse(JSONObject response) {
-					// TODO Auto-generated method stub
+					Intent i = new Intent(MainActivity.this, Meteo.class);
+					MainActivity.this.startActivity(i);
 					
 				}
 				
@@ -84,11 +93,12 @@ public class MainActivity extends Activity{
 
 				@Override
 				public void onErrorResponse(VolleyError error) {
-					// TODO Auto-generated method stub
+					Log.d("workshop", "An error poccured:"+error.getMessage());
 					
 				}
 			}
 		);
+		reqQueue.add(req);
 	}
 	
 	@Override
