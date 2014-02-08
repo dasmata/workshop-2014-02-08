@@ -1,0 +1,19 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.zitec.workshop"
+    android:versionCode="1"
+    android:versionName="1" >
+    <uses-sdk android:minSdkVersion="14" android:targetSdkVersion="19" />>
+
+    <application>
+        <activity
+            android:name=".MainActivity"
+            android:label="@string/appName"
+            android:theme="@android:style/Theme.Holo.Light.DarkActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>
