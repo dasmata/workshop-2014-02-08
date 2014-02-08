@@ -41,12 +41,6 @@ public class MainActivity extends Activity{
 		txt.setText(this.getResources().getString(R.string.splash_text));
 	}
 	
-	@Override
-	protected void onStart() {
-		super.onStart();
-		Log.d("workshop", "start");
-	}
-	
 	protected void checkInternetConnection(){
 		ConnectivityManager conManager = (ConnectivityManager)this.getSystemService(
 				Context.CONNECTIVITY_SERVICE);
