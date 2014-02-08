@@ -17,6 +17,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:parentActivityName=".MainActivity"
+            android:name=".Meteo"
+            android:label="@string/appName"
+            android:theme="@android:style/Theme.Holo.Light.DarkActionBar">
+        </activity>
     </application>
 
 </manifest>
