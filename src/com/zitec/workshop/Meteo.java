@@ -25,6 +25,10 @@ public class Meteo extends Activity {
 					.getJSONArray("forecast");
 			
 			
+			
+			
+			
+			
 		} catch (JSONException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
