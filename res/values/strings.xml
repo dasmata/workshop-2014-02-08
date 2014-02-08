@@ -3,5 +3,8 @@
     <string name="action_settings">Settings</string>
     <string name="hello_world">Hello world!</string>
     <string name="appName">Workshop</string>
-
+    <string name="splash_text">Loading...</string>
+    <string name="splash_error_message">You need internet connection to use this app</string>
+    <string name="refresh_connection_button">Refresh connection</string>
+    
 </resources>
