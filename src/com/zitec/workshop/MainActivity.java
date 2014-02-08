@@ -13,11 +13,12 @@ import android.widget.Button;
 import android.widget.TextView;
 
 public class MainActivity extends Activity{
-
+	protected TextView txt;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		this.setContentView(R.layout.splash);
+		this.txt = (TextView)this.findViewById(R.id.splash_text);
 		this.setActions();
 	}
 
@@ -33,8 +34,11 @@ public class MainActivity extends Activity{
 	}
 	
 	protected void showErrorMessage(){
-		TextView txt = (TextView)this.findViewById(R.id.splash_text);
 		txt.setText(this.getResources().getString(R.string.splash_error_message));
+	}
+	
+	protected void showLoading(){
+		txt.setText(this.getResources().getString(R.string.splash_text));
 	}
 	
 	@Override
@@ -49,10 +53,15 @@ public class MainActivity extends Activity{
 		
 		NetworkInfo info = conManager.getActiveNetworkInfo();
 		if(info != null && info.isConnected()){
-			
+			this.showLoading();
+			this.loadData();
 		} else {
 			this.showErrorMessage();
 		}
+	}
+	
+	protected void loadData(){
+		String url = "http://query.yahooapis.com/v1/public/yql?q=select%20item%20from%20weather.forecast%20where%20location%3D%2248907%22&format=json";
 	}
 	
 	@Override
@@ -66,24 +75,6 @@ public class MainActivity extends Activity{
 		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.main, menu);
 		return true;
-	}
-	
-	@Override
-	protected void onStop() {
-		super.onStop();
-		Log.d("workshop", "stop");
-	}
-
-	@Override
-	protected void onPause() {
-		super.onPause();
-		Log.d("workshop", "pause");
-	}
-	
-	@Override
-	protected void onDestroy() {
-		super.onDestroy();
-		Log.d("workshop", "destroy");
 	}
 
 }
