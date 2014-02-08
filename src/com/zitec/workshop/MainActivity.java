@@ -1,5 +1,14 @@
 package com.zitec.workshop;
 
+import org.json.JSONObject;
+
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
+
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
@@ -56,6 +65,30 @@ public class MainActivity extends Activity{
 	
 	protected void loadData(){
 		String url = "http://query.yahooapis.com/v1/public/yql?q=select%20item%20from%20weather.forecast%20where%20location%3D%2248907%22&format=json";
+		RequestQueue reqQueue = Volley.newRequestQueue(this);
+		
+		JsonObjectRequest req = new JsonObjectRequest(
+			Request.Method.GET,
+			url,
+			null,
+			new Response.Listener<JSONObject>(){
+
+				@Override
+				public void onResponse(JSONObject response) {
+					// TODO Auto-generated method stub
+					
+				}
+				
+			},
+			new Response.ErrorListener(){
+
+				@Override
+				public void onErrorResponse(VolleyError error) {
+					// TODO Auto-generated method stub
+					
+				}
+			}
+		);
 	}
 	
 	@Override
